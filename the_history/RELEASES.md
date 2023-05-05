@@ -173,7 +173,7 @@ Stabilized APIs
 ---------------
 
 - [`{core,std}::pin::pin!`](https://doc.rust-lang.org/stable/std/pin/macro.pin.html)
-- [`impl From<bool> for {f32,f64}`](https://doc.rust-lang.org/stable/std/primitive.f32.html#impl-From%3Cbool%3E-for-f32)
+- [`impl From&lt;bool> for {f32,f64}`](https://doc.rust-lang.org/stable/std/primitive.f32.html#impl-From%3Cbool%3E-for-f32)
 - [`std::path::MAIN_SEPARATOR_STR`](https://doc.rust-lang.org/stable/std/path/constant.MAIN_SEPARATOR_STR.html)
 - [`impl DerefMut for PathBuf`](https://doc.rust-lang.org/stable/std/path/struct.PathBuf.html#impl-DerefMut-for-PathBuf)
 
@@ -731,7 +731,7 @@ Stabilized APIs
 - [`Path::try_exists`]
 - [`Ref::filter_map`]
 - [`RefMut::filter_map`]
-- [`NonNull::<[T]>::len`][`NonNull::<slice>::len`]
+- [`NonNull::<[T]>::len`][`NonNull::&lt;slice>::len`]
 - [`ToOwned::clone_into`]
 - [`Ipv6Addr::to_ipv4_mapped`]
 - [`unix::io::AsFd`]
@@ -831,7 +831,7 @@ and related tools.
 [`Path::try_exists`]: https://doc.rust-lang.org/stable/std/path/struct.Path.html#method.try_exists
 [`Ref::filter_map`]: https://doc.rust-lang.org/stable/std/cell/struct.Ref.html#method.filter_map
 [`RefMut::filter_map`]: https://doc.rust-lang.org/stable/std/cell/struct.RefMut.html#method.filter_map
-[`NonNull::<slice>::len`]: https://doc.rust-lang.org/stable/std/ptr/struct.NonNull.html#method.len
+[`NonNull::&lt;slice>::len`]: https://doc.rust-lang.org/stable/std/ptr/struct.NonNull.html#method.len
 [`ToOwned::clone_into`]: https://doc.rust-lang.org/stable/std/borrow/trait.ToOwned.html#method.clone_into
 [`Ipv6Addr::to_ipv4_mapped`]: https://doc.rust-lang.org/stable/std/net/struct.Ipv6Addr.html#method.to_ipv4_mapped
 [`unix::io::AsFd`]: https://doc.rust-lang.org/stable/std/os/unix/io/trait.AsFd.html
@@ -932,8 +932,8 @@ Stabilized APIs
 - [`Stdin::lines`]
 - [`windows::CommandExt::raw_arg`]
 - [`impl<T: Default> Default for AssertUnwindSafe<T>`]
-- [`From<Rc<str>> for Rc<[u8]>`][rc-u8-from-str]
-- [`From<Arc<str>> for Arc<[u8]>`][arc-u8-from-str]
+- [`From<Rc&lt;str>> for Rc<[u8]>`][rc-u8-from-str]
+- [`From<Arc&lt;str>> for Arc<[u8]>`][arc-u8-from-str]
 - [`FusedIterator for EncodeWide`]
 - [RDM intrinsics on aarch64][stdarch/1285]
 
@@ -1530,7 +1530,7 @@ Libraries
 - [Re-enable debug checks for `copy` and `copy_nonoverlapping`][90041]
 - [Implement `RefUnwindSafe` for `Rc<T>`][87467]
 - [Make RSplit<T, P>: Clone not require T: Clone][90117]
-- [Implement `Termination` for `Result<Infallible, E>`][88601]. This allows writing `fn main() -> Result<Infallible, ErrorType>`, for a program whose successful exits never involve returning from `main` (for instance, a program that calls `exit`, or that uses `exec` to run another program).
+- [Implement `Termination` for `Result&lt;Infallible, E>`][88601]. This allows writing `fn main() -> Result&lt;Infallible, ErrorType>`, for a program whose successful exits never involve returning from `main` (for instance, a program that calls `exit`, or that uses `exec` to run another program).
 
 Stabilized APIs
 ---------------
@@ -1936,7 +1936,7 @@ Libraries
   These improvements should in general provide faster string parsing of floats,
   no longer reject certain valid floating point values, and reduce
   the produced code size for non-stripped artifacts.
-- [`string::Drain` now implements `AsRef<str>` and `AsRef<[u8]>`.][86858]
+- [`string::Drain` now implements `AsRef&lt;str>` and `AsRef<[u8]>`.][86858]
 
 Stabilised APIs
 ---------------
@@ -2109,7 +2109,7 @@ Stabilized APIs
 Cargo
 -----
 
-- [Added the `--prune <spec>` option to `cargo-tree` to remove a package from
+- [Added the `--prune &lt;spec>` option to `cargo-tree` to remove a package from
   the dependency graph.][cargo/9520]
 - [Added the `--depth` option to `cargo-tree` to print only to a certain depth
   in the tree ][cargo/9499]
@@ -2201,9 +2201,9 @@ Libraries
 - [`slice::IterMut<'_, T>` now implements `AsRef<[T]>`][82771]
 - [Arrays of any length now implement `IntoIterator`.][84147]
   Currently calling `.into_iter()` as a method on an array will
-  return `impl Iterator<Item=&T>`, but this may change in a
+  return `impl Iterator&lt;Item=&T>`, but this may change in a
   future edition to change `Item` to `T`. Calling `IntoIterator::into_iter`
-  directly on arrays will provide `impl Iterator<Item=T>` as expected.
+  directly on arrays will provide `impl Iterator&lt;Item=T>` as expected.
 - [`leading_zeros`, and `trailing_zeros` are now available on all
   `NonZero` integer types.][84082]
 - [`{f32, f64}::from_str` now parse and print special values
@@ -2403,7 +2403,7 @@ Libraries
 ---------
 - [`OsString` now implements `Extend` and `FromIterator`.][82121]
 - [`cmp::Reverse` now has `#[repr(transparent)]` representation.][81879]
-- [`Arc<impl Error>` now implements `error::Error`.][80553]
+- [`Arc&lt;impl Error>` now implements `error::Error`.][80553]
 - [All integer division and remainder operations are now `const`.][80962]
 
 Stabilised APIs
@@ -2568,7 +2568,7 @@ Libraries
 ---------
 
 - [`Box::downcast` is now also implemented for any `dyn Any + Send + Sync` object.][80945]
-- [`str` now implements `AsMut<str>`.][80279]
+- [`str` now implements `AsMut&lt;str>`.][80279]
 - [`u64` and `u128` now implement `From<char>`.][79502]
 - [`Error` is now implemented for `&T` where `T` implements `Error`.][75180]
 - [`Poll::{map_ok, map_err}` are now implemented for `Poll<Option<Result<T, E>>>`.][80968]
@@ -3785,14 +3785,14 @@ Compiler
 Libraries
 ---------
 - [`Arc<[T; N]>`, `Box<[T; N]>`, and `Rc<[T; N]>`, now implement
-  `TryFrom<Arc<[T]>>`,`TryFrom<Box<[T]>>`, and `TryFrom<Rc<[T]>>`
+  `TryFrom<Arc<[T]>>`,`TryFrom&lt;Box<[T]>>`, and `TryFrom<Rc<[T]>>`
   respectively.][69538] **Note** These conversions are only available when `N`
   is `0..=32`.
 - [You can now use associated constants on floats and integers directly, rather
   than having to import the module.][68952] e.g. You can now write `u32::MAX` or
   `f32::NAN` with no imports.
 - [`u8::is_ascii` is now `const`.][68984]
-- [`String` now implements `AsMut<str>`.][68742]
+- [`String` now implements `AsMut&lt;str>`.][68742]
 - [Added the `primitive` module to `std` and `core`.][67637] This module
   reexports Rust's primitive types. This is mainly useful in macros
   where you want avoid these types being shadowed.
@@ -4008,8 +4008,8 @@ Language
 - [You can now pass type parameters to foreign items when implementing
   traits.][65879] E.g. You can now write `impl<T> From<Foo> for Vec<T> {}`.
 - [You can now arbitrarily nest receiver types in the `self` position.][64325] E.g. you can
-  now write `fn foo(self: Box<Box<Self>>) {}`. Previously only `Self`, `&Self`,
-  `&mut Self`, `Arc<Self>`, `Rc<Self>`, and `Box<Self>` were allowed.
+  now write `fn foo(self: Box&lt;Box&lt;Self>>) {}`. Previously only `Self`, `&Self`,
+  `&mut Self`, `Arc&lt;Self>`, `Rc&lt;Self>`, and `Box&lt;Self>` were allowed.
 - [You can now use any valid identifier in a `format_args` macro.][66847]
   Previously identifiers starting with an underscore were not allowed.
 - [Visibility modifiers (e.g. `pub`) are now syntactically allowed on trait items and
@@ -4534,7 +4534,7 @@ Stabilized APIs
 - [`BufReader::buffer`]
 - [`BufWriter::buffer`]
 - [`Cell::from_mut`]
-- [`Cell<[T]>::as_slice_of_cells`][`Cell<slice>::as_slice_of_cells`]
+- [`Cell<[T]>::as_slice_of_cells`][`Cell&lt;slice>::as_slice_of_cells`]
 - [`DoubleEndedIterator::nth_back`]
 - [`Option::xor`]
 - [`Wrapping::reverse_bits`]
@@ -4588,7 +4588,7 @@ Compatibility Notes
 [`BufReader::buffer`]: https://doc.rust-lang.org/std/io/struct.BufReader.html#method.buffer
 [`BufWriter::buffer`]: https://doc.rust-lang.org/std/io/struct.BufWriter.html#method.buffer
 [`Cell::from_mut`]: https://doc.rust-lang.org/std/cell/struct.Cell.html#method.from_mut
-[`Cell<slice>::as_slice_of_cells`]: https://doc.rust-lang.org/std/cell/struct.Cell.html#method.as_slice_of_cells
+[`Cell&lt;slice>::as_slice_of_cells`]: https://doc.rust-lang.org/std/cell/struct.Cell.html#method.as_slice_of_cells
 [`DoubleEndedIterator::nth_back`]: https://doc.rust-lang.org/std/iter/trait.DoubleEndedIterator.html#method.nth_back
 [`Option::xor`]: https://doc.rust-lang.org/std/option/enum.Option.html#method.xor
 [`Wrapping::reverse_bits`]: https://doc.rust-lang.org/std/num/struct.Wrapping.html#method.reverse_bits
@@ -4621,10 +4621,10 @@ Language
 Libraries
 ---------
 - [`HashMap`'s implementation has been replaced with `hashbrown::HashMap` implementation.][58623]
-- [`TryFromSliceError` now implements `From<Infallible>`.][60318]
+- [`TryFromSliceError` now implements `From&lt;Infallible>`.][60318]
 - [`mem::needs_drop` is now available as a const fn.][60364]
 - [`alloc::Layout::from_size_align_unchecked` is now available as a const fn.][60370]
-- [`String` now implements `BorrowMut<str>`.][60404]
+- [`String` now implements `BorrowMut&lt;str>`.][60404]
 - [`io::Cursor` now implements `Default`.][60234]
 - [Both `NonNull::{dangling, cast}` are now const fns.][60244]
 - [The `alloc` crate is now stable.][59675] `alloc` allows you to use a subset
@@ -4862,7 +4862,7 @@ Libraries
 - [The methods `overflowing_neg` and `wrapping_neg` are now `const` functions
   for all numeric types.][58044]
 - [Indexing a `str` is now generic over all types that
-  implement `SliceIndex<str>`.][57604]
+  implement `SliceIndex&lt;str>`.][57604]
 - [`str::trim`, `str::trim_matches`, `str::trim_{start, end}`, and
   `str::trim_{start, end}_matches` are now `#[must_use]`][57106] and will
   produce a warning if their returning type is unused.
@@ -5172,10 +5172,10 @@ Language
   ```rust
   enum List<T>
   where
-      Self: PartialOrd<Self> // can write `Self` instead of `List<T>`
+      Self: PartialOrd&lt;Self> // can write `Self` instead of `List<T>`
   {
       Nil,
-      Cons(T, Box<Self>) // likewise here
+      Cons(T, Box&lt;Self>) // likewise here
   }
   ```
 - [You can now mark traits with `#[must_use]`.][55663] This provides a warning if
@@ -5671,7 +5671,7 @@ Libraries
 ---------
 - [`Once::call_once` no longer requires `Once` to be `'static`.][52239]
 - [`BuildHasherDefault` now implements `PartialEq` and `Eq`.][52402]
-- [`Box<CStr>`, `Box<OsStr>`, and `Box<Path>` now implement `Clone`.][51912]
+- [`Box<CStr>`, `Box<OsStr>`, and `Box&lt;Path>` now implement `Clone`.][51912]
 - [Implemented `PartialEq<&str>` for `OsString` and `PartialEq<OsString>`
   for `&str`.][51178]
 - [`Cell<T>` now allows `T` to be unsized.][50494]
@@ -5775,18 +5775,18 @@ Compiler
 Libraries
 ---------
 - [Implemented `Default` for `&mut str`.][51306]
-- [Implemented `From<bool>` for all integer and unsigned number types.][50554]
+- [Implemented `From&lt;bool>` for all integer and unsigned number types.][50554]
 - [Implemented `Extend` for `()`.][50234]
 - [The `Debug` implementation of `time::Duration` should now be more easily
   human readable.][50364] Previously a `Duration` of one second would printed as
   `Duration { secs: 1, nanos: 0 }` and will now be printed as `1s`.
-- [Implemented `From<&String>` for `Cow<str>`, `From<&Vec<T>>` for `Cow<[T]>`,
+- [Implemented `From<&String>` for `Cow&lt;str>`, `From<&Vec<T>>` for `Cow<[T]>`,
   `From<Cow<CStr>>` for `CString`, `From<CString>, From<CStr>, From<&CString>`
   for `Cow<CStr>`, `From<OsString>, From<OsStr>, From<&OsString>` for
-  `Cow<OsStr>`, `From<&PathBuf>` for `Cow<Path>`, and `From<Cow<Path>>`
+  `Cow<OsStr>`, `From<&PathBuf>` for `Cow&lt;Path>`, and `From<Cow&lt;Path>>`
   for `PathBuf`.][50170]
 - [Implemented `Shl` and `Shr` for `Wrapping<u128>`
-  and `Wrapping<i128>`.][50465]
+  and `Wrapping&lt;i128>`.][50465]
 - [`DirEntry::metadata` now uses `fstatat` instead of `lstat` when
   possible.][51050] This can provide up to a 40% speed increase.
 - [Improved error messages when using `format!`.][50610]
@@ -6130,8 +6130,8 @@ Language
 - [The `'_` lifetime is now stable. The underscore lifetime can be used anywhere a
   lifetime can be elided.][49458]
 - [`impl Trait` is now stable allowing you to have abstract types in returns
-   or in function parameters.][49255] E.g. `fn foo() -> impl Iterator<Item=u8>` or
-  `fn open(path: impl AsRef<Path>)`.
+   or in function parameters.][49255] E.g. `fn foo() -> impl Iterator&lt;Item=u8>` or
+  `fn open(path: impl AsRef&lt;Path>)`.
 - [Pattern matching will now automatically apply dereferences.][49394]
 - [128-bit integers in the form of `u128` and `i128` are now stable.][49101]
 - [`main` can now return `Result<(), E: Debug>`][49162] in addition to `()`.
@@ -6354,7 +6354,7 @@ Libraries
 - [`UnsafeCell::into_inner` is now safe.][47204]
 - [Implement libstd for CloudABI.][47268]
 - [`Float::{from_bits, to_bits}` is now available in libcore.][46931]
-- [Implement `AsRef<Path>` for Component][46985]
+- [Implement `AsRef&lt;Path>` for Component][46985]
 - [Implemented `Write` for `Cursor<&mut Vec<u8>>`][46830]
 - [Moved `Duration` to libcore.][46666]
 
@@ -6453,10 +6453,10 @@ Libraries
 - [`OsStr`'s `Debug` implementation is now lossless and consistent
   with Windows.][46798]
 - [`time::{SystemTime, Instant}` now implement `Hash`.][46828]
-- [impl `From<bool>` for `AtomicBool`][46293]
+- [impl `From&lt;bool>` for `AtomicBool`][46293]
 - [impl `From<{CString, &CStr}>` for `{Arc<CStr>, Rc<CStr>}`][45990]
 - [impl `From<{OsString, &OsStr}>` for `{Arc<OsStr>, Rc<OsStr>}`][45990]
-- [impl `From<{PathBuf, &Path}>` for `{Arc<Path>, Rc<Path>}`][45990]
+- [impl `From<{PathBuf, &Path}>` for `{Arc&lt;Path>, Rc&lt;Path>}`][45990]
 - [float::from_bits now just uses transmute.][46012] This provides
   some optimisations from LLVM.
 - [Copied `AsciiExt` methods onto `char`][46077]
@@ -6663,7 +6663,7 @@ Libraries
 ---------
 - [Allow atomic operations up to 32 bits
   on `armv5te_unknown_linux_gnueabi`][44978]
-- [`Box<Error>` now impls `From<Cow<str>>`][44466]
+- [`Box<Error>` now impls `From<Cow&lt;str>>`][44466]
 - [`std::mem::Discriminant` is now guaranteed to be `Send + Sync`][45095]
 - [`fs::copy` now returns the length of the main stream on NTFS.][44895]
 - [Properly detect overflow in `Instant += Duration`.][44220]
@@ -6740,8 +6740,8 @@ Language
 - [Relaxed path syntax. Optional `::` before `<` is now allowed in all contexts.][43540]
   Example:
   ```rust
-  my_macro!(Vec<i32>::new); // Always worked
-  my_macro!(Vec::<i32>::new); // Now works
+  my_macro!(Vec&lt;i32>::new); // Always worked
+  my_macro!(Vec::&lt;i32>::new); // Now works
   ```
 
 Compiler
@@ -6756,8 +6756,8 @@ Libraries
 - [Generate builtin impls for `Clone` for all arrays and tuples that
   are `T: Clone`][43690]
 - [`Stdin`, `Stdout`, and `Stderr` now implement `AsRawFd`.][43459]
-- [`Rc` and `Arc` now implement `From<&[T]> where T: Clone`, `From<str>`,
-  `From<String>`, `From<Box<T>> where T: ?Sized`, and `From<Vec<T>>`.][42565]
+- [`Rc` and `Arc` now implement `From<&[T]> where T: Clone`, `From&lt;str>`,
+  `From&lt;String>`, `From&lt;Box<T>> where T: ?Sized`, and `From<Vec<T>>`.][42565]
 
 Stabilized APIs
 ---------------
@@ -7046,7 +7046,7 @@ Libraries
 - [`String` now implements `FromIterator<Cow<'a, str>>` and
   `Extend<Cow<'a, str>>`][41449]
 - [`Vec` now implements `From<&mut [T]>`][41530]
-- [`Box<[u8]>` now implements `From<Box<str>>`][41258]
+- [`Box<[u8]>` now implements `From&lt;Box&lt;str>>`][41258]
 - [`SplitWhitespace` now implements `Clone`][41659]
 - [`[u8]::reverse` is now 5x faster and `[u16]::reverse` is now
   1.5x faster][41764]
@@ -7401,30 +7401,30 @@ Libraries
 * [`Cell` can store non-`Copy` types][39793]. [RFC 1651]
 * [`String` implements `FromIterator<&char>`][40028]
 * `Box` [implements][40009] a number of new conversions:
-  `From<Box<str>> for String`,
-  `From<Box<[T]>> for Vec<T>`,
-  `From<Box<CStr>> for CString`,
-  `From<Box<OsStr>> for OsString`,
-  `From<Box<Path>> for PathBuf`,
-  `Into<Box<str>> for String`,
-  `Into<Box<[T]>> for Vec<T>`,
-  `Into<Box<CStr>> for CString`,
-  `Into<Box<OsStr>> for OsString`,
-  `Into<Box<Path>> for PathBuf`,
-  `Default for Box<str>`,
+  `From&lt;Box&lt;str>> for String`,
+  `From&lt;Box<[T]>> for Vec<T>`,
+  `From&lt;Box<CStr>> for CString`,
+  `From&lt;Box<OsStr>> for OsString`,
+  `From&lt;Box&lt;Path>> for PathBuf`,
+  `Into&lt;Box&lt;str>> for String`,
+  `Into&lt;Box<[T]>> for Vec<T>`,
+  `Into&lt;Box<CStr>> for CString`,
+  `Into&lt;Box<OsStr>> for OsString`,
+  `Into&lt;Box&lt;Path>> for PathBuf`,
+  `Default for Box&lt;str>`,
   `Default for Box<CStr>`,
   `Default for Box<OsStr>`,
   `From<&CStr> for Box<CStr>`,
   `From<&OsStr> for Box<OsStr>`,
-  `From<&Path> for Box<Path>`
+  `From<&Path> for Box&lt;Path>`
 * [`ffi::FromBytesWithNulError` implements `Error` and `Display`][39960]
 * [Specialize `PartialOrd<A> for [A] where A: Ord`][39642]
 * [Slightly optimize `slice::sort`][39538]
 * [Add `ToString` trait specialization for `Cow<'a, str>` and `String`][39440]
 * [`Box<[T]>` implements `From<&[T]> where T: Copy`,
-  `Box<str>` implements `From<&str>`][39438]
+  `Box&lt;str>` implements `From<&str>`][39438]
 * [`IpAddr` implements `From` for various arrays. `SocketAddr` implements
-  `From<(I, u16)> where I: Into<IpAddr>`][39372]
+  `From<(I, u16)> where I: Into&lt;IpAddr>`][39372]
 * [`format!` estimates the needed capacity before writing a string][39356]
 * [Support unprivileged symlink creation in Windows][38921]
 * [`PathBuf` implements `Default`][38764]
@@ -7654,7 +7654,7 @@ Libraries
 * [`[T]::binary_search` and `[T]::binary_search_by_key` now take
   their argument by `Borrow` parameter][37761]
 * [All public types in std implement `Debug`][38006]
-* [`IpAddr` implements `From<Ipv4Addr>` and `From<Ipv6Addr>`][38327]
+* [`IpAddr` implements `From&lt;Ipv4Addr>` and `From&lt;Ipv6Addr>`][38327]
 * [`Ipv6Addr` implements `From<[u16; 8]>`][38131]
 * [Ctrl-Z returns from `Stdin.read()` when reading from the console on
   Windows][38274]
@@ -7840,7 +7840,7 @@ Compiler Performance
 * [Remove `scope_auxiliary` to cut RSS by 10%][37764]
 * [Use small vectors in type walker][37760]
 * [Macro expansion performance was improved][37701]
-* [Change `HirVec<P<T>>` to `HirVec<T>` in `hir::Expr`][37642]
+* [Change `HirVec&lt;P<T>>` to `HirVec<T>` in `hir::Expr`][37642]
 * [Replace FNV with a faster hash function][37229]
 
 Stabilized APIs
@@ -8045,7 +8045,7 @@ Language
   and tuples][36843]. [RFC 1492].
 * [Safe `fn` items can be coerced to `unsafe fn` pointers][37389]
 * [`use *` and `use ::*` both glob-import from the crate root][37367]
-* [It's now possible to call a `Vec<Box<Fn()>>` without explicit
+* [It's now possible to call a `Vec&lt;Box<Fn()>>` without explicit
   dereferencing][36822]
 
 Compiler
@@ -8087,7 +8087,7 @@ Libraries
   Previously, an empty string was required to achieve the same.
 * [`Wrapping` impls standard binary and unary operators, as well as
    the `Sum` and `Product` iterators][37356]
-* [Implement `From<Cow<str>> for String` and `From<Cow<[T]>> for
+* [Implement `From<Cow&lt;str>> for String` and `From<Cow<[T]>> for
   Vec<T>`][37326]
 * [Improve `fold` performance for `chain`, `cloned`, `map`, and
   `VecDeque` iterators][37315]
@@ -8099,13 +8099,13 @@ Libraries
 * [Implement `RefUnwindSafe` for atomic types][37178]
 * [Specialize `Vec::extend` to `Vec::extend_from_slice`][37094]
 * [Avoid allocations in `Decoder::read_str`][37064]
-* [`io::Error` implements `From<io::ErrorKind>`][37037]
+* [`io::Error` implements `From&lt;io::ErrorKind>`][37037]
 * [Impl `Debug` for raw pointers to unsized data][36880]
 * [Don't reuse `HashMap` random seeds][37470]
 * [The internal memory layout of `HashMap` is more cache-friendly, for
   significant improvements in some operations][36692]
 * [`HashMap` uses less memory on 32-bit architectures][36595]
-* [Impl `Add<{str, Cow<str>}>` for `Cow<str>`][36430]
+* [Impl `Add<{str, Cow&lt;str>}>` for `Cow&lt;str>`][36430]
 
 Cargo
 -----
@@ -8631,7 +8631,7 @@ Libraries
 * [`RwLock` panics if the reader count overflows](https://github.com/rust-lang/rust/pull/35378)
 * [`vec_deque::Drain`, `hash_map::Drain` and `hash_set::Drain` are covariant](https://github.com/rust-lang/rust/pull/35354)
 * [`vec::Drain` and `binary_heap::Drain` are covariant](https://github.com/rust-lang/rust/pull/34951)
-* [`Cow<str>` implements `FromIterator` for `char`, `&str` and `String`](https://github.com/rust-lang/rust/pull/35064)
+* [`Cow&lt;str>` implements `FromIterator` for `char`, `&str` and `String`](https://github.com/rust-lang/rust/pull/35064)
 * [Sockets on Linux are correctly closed in subprocesses via `SOCK_CLOEXEC`](https://github.com/rust-lang/rust/pull/34946)
 * [`hash_map::Entry`, `hash_map::VacantEntry` and `hash_map::OccupiedEntry`
   implement `Debug`](https://github.com/rust-lang/rust/pull/34937)
@@ -9773,7 +9773,7 @@ Libraries
   or `f64`. They are also not implemented for `isize` and `usize`
   because the implementations would be platform-specific. `From` is
   also implemented from `f32` to `f64`.
-* `From<&Path>` and `From<PathBuf>` are implemented for `Cow<Path>`.
+* `From<&Path>` and `From&lt;PathBuf>` are implemented for `Cow&lt;Path>`.
 * `From<T>` is implemented for `Box<T>`, `Rc<T>` and `Arc<T>`.
 * `IntoIterator` is implemented for `&PathBuf` and `&Path`.
 * [`BinaryHeap` was refactored][1.6bh] for modest performance
@@ -10133,7 +10133,7 @@ Language
 Libraries
 ---------
 
-* [Many APIs were stabilized][stab]: `<Box<str>>::into_string`,
+* [Many APIs were stabilized][stab]: `&lt;Box&lt;str>>::into_string`,
   [`Arc::downgrade`], [`Arc::get_mut`], [`Arc::make_mut`],
   [`Arc::try_unwrap`], [`Box::from_raw`], [`Box::into_raw`], [`CStr::to_str`],
   [`CStr::to_string_lossy`], [`CString::from_raw`], [`CString::into_raw`],
@@ -10166,7 +10166,7 @@ Libraries
 * [`IntoRawFd` has been added to the Unix-specific prelude,
   `IntoRawSocket` and `IntoRawHandle` to the Windows-specific
   prelude][pr].
-* [`Extend<String>` and `FromIterator<String` are both implemented for
+* [`Extend&lt;String>` and `FromIterator&lt;String` are both implemented for
   `String`][es].
 * [`IntoIterator` is implemented for references to `Option` and
   `Result`][into2].
@@ -10332,7 +10332,7 @@ Libraries
 
 * The [`Duration`] API, [has been stabilized][ds], as well as the
   `std::time` module, which presently contains only `Duration`.
-* `Box<str>` and `Box<[T]>` both implement `Clone`.
+* `Box&lt;str>` and `Box<[T]>` both implement `Clone`.
 * The owned C string, [`CString`], implements [`Borrow`] and the
   borrowed C string, [`CStr`], implements [`ToOwned`]. The two of
   these allow C strings to be borrowed and cloned in generic code.
@@ -11151,7 +11151,7 @@ Version 1.0.0-alpha (2015-01-09)
 ### Misc
 
 * Nullable enum optimizations have been extended to more types so
-  that e.g. `Option<Vec<T>>` and `Option<String>` take up no more
+  that e.g. `Option<Vec<T>>` and `Option&lt;String>` take up no more
   space than the inner types themselves.
 * Work has begun on supporting AArch64.
 
@@ -11265,7 +11265,7 @@ Version 0.12.0 (2014-10-09)
 * As part of dynamically-sized types, the `Sized` trait has been
   introduced, which qualifying types implement by default, and
   which type parameters expect by default. To specify that a type
-  parameter does not need to be sized, write `<Sized? T>`. Most
+  parameter does not need to be sized, write `&lt;Sized? T>`. Most
   types are `Sized`, notable exceptions being unsized arrays
   (`[T]`) and trait types.
 * Closures can return `!`, as in `|| -> !` or `proc() -> !`.

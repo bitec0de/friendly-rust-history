@@ -2813,7 +2813,7 @@ type system.</p>
  trait has been
 introduced, which qualifying types implement by default, and
 which type parameters expect by default. To specify that a type
-parameter does not need to be sized, write <span class='code'><Sized? T></span>
+parameter does not need to be sized, write <span class='code'>&lt;Sized? T></span>
 . Most
 types are <span class='code'>Sized</span>
 , notable exceptions being unsized arrays
@@ -3160,7 +3160,7 @@ platform.</p>
 <ul>
 <li><p>Nullable enum optimizations have been extended to more types so
 that e.g. <span class='code'>Option<Vec<T>></span>
- and <span class='code'>Option<String></span>
+ and <span class='code'>Option&lt;String></span>
  take up no more
 space than the inner types themselves.</p>
 </li>
@@ -4052,7 +4052,7 @@ destroyed values, <a href='dropck'>have been updated</a> to match the
  module, which presently contains only <span class='code'>Duration</span>
 .</p>
 </li>
-<li><p><span class='code'>Box<str></span>
+<li><p><span class='code'>Box&lt;str></span>
  and <span class='code'>Box<[T]></span>
  both implement <span class='code'>Clone</span>
 .</p>
@@ -4278,7 +4278,7 @@ warning</a> until a better solution is found.</p>
 <div><span class='sticky-subheader'><div class='solid-background'><h3>Libraries</h3></div></span>
 
 <ul>
-<li><p><a href='https://github.com/rust-lang/rust/pull/28339'>Many APIs were stabilized</a>: <span class='code'><Box<str>>::into_string</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/28339'>Many APIs were stabilized</a>: <span class='code'>&lt;Box&lt;str>>::into_string</span>
 ,
 <a href='`arc::downgrade`'><span class='code'>Arc::downgrade</span>
 </a>, <a href='`arc::get_mut`'><span class='code'>Arc::get_mut</span>
@@ -4388,8 +4388,8 @@ implementation</a>.</p>
  to the Windows-specific
 prelude</a>.</p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/27956'><span class='code'>Extend<String></span>
- and <span class='code'>FromIterator<String</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/27956'><span class='code'>Extend&lt;String></span>
+ and <span class='code'>FromIterator&lt;String</span>
  are both implemented for
 <span class='code'>String</span>
 </a>.</p>
@@ -4866,8 +4866,8 @@ also implemented from <span class='code'>f32</span>
 .</p>
 </li>
 <li><p><span class='code'>From<&Path></span>
- and <span class='code'>From<PathBuf></span>
- are implemented for <span class='code'>Cow<Path></span>
+ and <span class='code'>From&lt;PathBuf></span>
+ are implemented for <span class='code'>Cow&lt;Path></span>
 .</p>
 </li>
 <li><p><span class='code'>From<T></span>
@@ -7009,7 +7009,7 @@ in multiple styles</a></p>
  and <span class='code'>binary_heap::Drain</span>
  are covariant</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/35064'><span class='code'>Cow<str></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/35064'><span class='code'>Cow&lt;str></span>
  implements <span class='code'>FromIterator</span>
  for <span class='code'>char</span>
 , <span class='code'>&str</span>
@@ -7551,7 +7551,7 @@ and tuples</a>. <a href='rfc1492'>RFC 1492</a>.</p>
  and <span class='code'>use ::*</span>
  both glob-import from the crate root</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/36822'>It's now possible to call a <span class='code'>Vec<Box<Fn()>></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/36822'>It's now possible to call a <span class='code'>Vec&lt;Box<Fn()>></span>
  without explicit
 dereferencing</a></p>
 </li>
@@ -7644,7 +7644,7 @@ the <span class='code'>Sum</span>
  and <span class='code'>Product</span>
  iterators</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/37326'>Implement <span class='code'>From<Cow<str>> for String</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/37326'>Implement <span class='code'>From<Cow&lt;str>> for String</span>
  and <span class='code'>From<Cow<[T]>> for
 Vec<T></span>
 </a></p>
@@ -7683,7 +7683,7 @@ Extend</a></p>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/37037'><span class='code'>io::Error</span>
- implements <span class='code'>From<io::ErrorKind></span>
+ implements <span class='code'>From&lt;io::ErrorKind></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/36880'>Impl <span class='code'>Debug</span>
@@ -7699,8 +7699,8 @@ significant improvements in some operations</a></p>
 <li><p><a href='https://github.com/rust-lang/rust/pull/36595'><span class='code'>HashMap</span>
  uses less memory on 32-bit architectures</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/36430'>Impl <span class='code'>Add<{str, Cow<str>}></span>
- for <span class='code'>Cow<str></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/36430'>Impl <span class='code'>Add<{str, Cow&lt;str>}></span>
+ for <span class='code'>Cow&lt;str></span>
 </a></p>
 </li>
 
@@ -7950,7 +7950,7 @@ formatting directives and suggests the correct format</a>.</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/37701'>Macro expansion performance was improved</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/37642'>Change <span class='code'>HirVec<P<T>></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/37642'>Change <span class='code'>HirVec&lt;P<T>></span>
  to <span class='code'>HirVec<T></span>
  in <span class='code'>hir::Expr</span>
 </a></p>
@@ -8343,8 +8343,8 @@ their argument by <span class='code'>Borrow</span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/38327'><span class='code'>IpAddr</span>
- implements <span class='code'>From<Ipv4Addr></span>
- and <span class='code'>From<Ipv6Addr></span>
+ implements <span class='code'>From&lt;Ipv4Addr></span>
+ and <span class='code'>From&lt;Ipv6Addr></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/38131'><span class='code'>Ipv6Addr</span>
@@ -8648,27 +8648,27 @@ future work, including incremental type checking, but also resolves <a href='rfc
 </li>
 <li><p><span class='code'>Box</span>
  <a href='https://github.com/rust-lang/rust/pull/40009'>implements</a> a number of new conversions:
-<span class='code'>From<Box<str>> for String</span>
+<span class='code'>From&lt;Box&lt;str>> for String</span>
 ,
-<span class='code'>From<Box<[T]>> for Vec<T></span>
+<span class='code'>From&lt;Box<[T]>> for Vec<T></span>
 ,
-<span class='code'>From<Box<CStr>> for CString</span>
+<span class='code'>From&lt;Box<CStr>> for CString</span>
 ,
-<span class='code'>From<Box<OsStr>> for OsString</span>
+<span class='code'>From&lt;Box<OsStr>> for OsString</span>
 ,
-<span class='code'>From<Box<Path>> for PathBuf</span>
+<span class='code'>From&lt;Box&lt;Path>> for PathBuf</span>
 ,
-<span class='code'>Into<Box<str>> for String</span>
+<span class='code'>Into&lt;Box&lt;str>> for String</span>
 ,
-<span class='code'>Into<Box<[T]>> for Vec<T></span>
+<span class='code'>Into&lt;Box<[T]>> for Vec<T></span>
 ,
-<span class='code'>Into<Box<CStr>> for CString</span>
+<span class='code'>Into&lt;Box<CStr>> for CString</span>
 ,
-<span class='code'>Into<Box<OsStr>> for OsString</span>
+<span class='code'>Into&lt;Box<OsStr>> for OsString</span>
 ,
-<span class='code'>Into<Box<Path>> for PathBuf</span>
+<span class='code'>Into&lt;Box&lt;Path>> for PathBuf</span>
 ,
-<span class='code'>Default for Box<str></span>
+<span class='code'>Default for Box&lt;str></span>
 ,
 <span class='code'>Default for Box<CStr></span>
 ,
@@ -8678,7 +8678,7 @@ future work, including incremental type checking, but also resolves <a href='rfc
 ,
 <span class='code'>From<&OsStr> for Box<OsStr></span>
 ,
-<span class='code'>From<&Path> for Box<Path></span>
+<span class='code'>From<&Path> for Box&lt;Path></span>
 </p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/39960'><span class='code'>ffi::FromBytesWithNulError</span>
@@ -8700,7 +8700,7 @@ future work, including incremental type checking, but also resolves <a href='rfc
 <li><p><a href='https://github.com/rust-lang/rust/pull/39438'><span class='code'>Box<[T]></span>
  implements <span class='code'>From<&[T]> where T: Copy</span>
 ,
-<span class='code'>Box<str></span>
+<span class='code'>Box&lt;str></span>
  implements <span class='code'>From<&str></span>
 </a></p>
 </li>
@@ -8708,7 +8708,7 @@ future work, including incremental type checking, but also resolves <a href='rfc
  implements <span class='code'>From</span>
  for various arrays. <span class='code'>SocketAddr</span>
  implements
-<span class='code'>From<(I, u16)> where I: Into<IpAddr></span>
+<span class='code'>From<(I, u16)> where I: Into&lt;IpAddr></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/39356'><span class='code'>format!</span>
@@ -9171,7 +9171,7 @@ libraries with C Run-time Libraries(CRT) to be statically linked.</p>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/41258'><span class='code'>Box<[u8]></span>
- now implements <span class='code'>From<Box<str>></span>
+ now implements <span class='code'>From&lt;Box&lt;str>></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/41659'><span class='code'>SplitWhitespace</span>
@@ -9626,8 +9626,8 @@ Example:</p>
  before <span class='code'><</span>
  is now allowed in all contexts.</a>
 Example:</p>
-<pre class='code'>my_macro!(Vec<i32>::new); // Always worked
-my_macro!(Vec::<i32>::new); // Now works</pre>
+<pre class='code'>my_macro!(Vec&lt;i32>::new); // Always worked
+my_macro!(Vec::&lt;i32>::new); // Now works</pre>
 </li>
 
 </ul>
@@ -9662,10 +9662,10 @@ are <span class='code'>T: Clone</span>
 <li><p><a href='https://github.com/rust-lang/rust/pull/42565'><span class='code'>Rc</span>
  and <span class='code'>Arc</span>
  now implement <span class='code'>From<&[T]> where T: Clone</span>
-, <span class='code'>From<str></span>
+, <span class='code'>From&lt;str></span>
 ,
-<span class='code'>From<String></span>
-, <span class='code'>From<Box<T>> where T: ?Sized</span>
+<span class='code'>From&lt;String></span>
+, <span class='code'>From&lt;Box<T>> where T: ?Sized</span>
 , and <span class='code'>From<Vec<T>></span>
 .</a></p>
 </li>
@@ -9792,7 +9792,7 @@ on <span class='code'>armv5te_unknown_linux_gnueabi</span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/44466'><span class='code'>Box<Error></span>
- now impls <span class='code'>From<Cow<str>></span>
+ now impls <span class='code'>From<Cow&lt;str>></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/45095'><span class='code'>std::mem::Discriminant</span>
@@ -10052,7 +10052,7 @@ with Windows.</a></p>
  now implement <span class='code'>Hash</span>
 .</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/46293'>impl <span class='code'>From<bool></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/46293'>impl <span class='code'>From&lt;bool></span>
  for <span class='code'>AtomicBool</span>
 </a></p>
 </li>
@@ -10065,7 +10065,7 @@ with Windows.</a></p>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/45990'>impl <span class='code'>From<{PathBuf, &Path}></span>
- for <span class='code'>{Arc<Path>, Rc<Path>}</span>
+ for <span class='code'>{Arc&lt;Path>, Rc&lt;Path>}</span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/46012'>float::from_bits now just uses transmute.</a> This provides
@@ -10284,7 +10284,7 @@ fn main() {
 <li><p><a href='https://github.com/rust-lang/rust/pull/46931'><span class='code'>Float::{from_bits, to_bits}</span>
  is now available in libcore.</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/46985'>Implement <span class='code'>AsRef<Path></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/46985'>Implement <span class='code'>AsRef&lt;Path></span>
  for Component</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/46830'>Implemented <span class='code'>Write</span>
@@ -10387,9 +10387,9 @@ lifetime can be elided.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/49255'><span class='code'>impl Trait</span>
  is now stable allowing you to have abstract types in returns
-or in function parameters.</a> E.g. <span class='code'>fn foo() -> impl Iterator<Item=u8></span>
+or in function parameters.</a> E.g. <span class='code'>fn foo() -> impl Iterator&lt;Item=u8></span>
  or
-<span class='code'>fn open(path: impl AsRef<Path>)</span>
+<span class='code'>fn open(path: impl AsRef&lt;Path>)</span>
 .</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/49394'>Pattern matching will now automatically apply dereferences.</a></p>
@@ -11032,7 +11032,7 @@ improve compile times of macro heavy crates on average by 5%.</p>
  for <span class='code'>&mut str</span>
 .</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/50554/'>Implemented <span class='code'>From<bool></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/50554/'>Implemented <span class='code'>From&lt;bool></span>
  for all integer and unsigned number types.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/50234/'>Implemented <span class='code'>Extend</span>
@@ -11049,7 +11049,7 @@ human readable.</a> Previously a <span class='code'>Duration</span>
 .</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/50170/'>Implemented <span class='code'>From<&String></span>
- for <span class='code'>Cow<str></span>
+ for <span class='code'>Cow&lt;str></span>
 , <span class='code'>From<&Vec<T>></span>
  for <span class='code'>Cow<[T]></span>
 ,
@@ -11062,8 +11062,8 @@ for <span class='code'>Cow<CStr></span>
  for
 <span class='code'>Cow<OsStr></span>
 , <span class='code'>From<&PathBuf></span>
- for <span class='code'>Cow<Path></span>
-, and <span class='code'>From<Cow<Path>></span>
+ for <span class='code'>Cow&lt;Path></span>
+, and <span class='code'>From<Cow&lt;Path>></span>
 
 for <span class='code'>PathBuf</span>
 .</a></p>
@@ -11072,7 +11072,7 @@ for <span class='code'>PathBuf</span>
  and <span class='code'>Shr</span>
  for <span class='code'>Wrapping<u128></span>
 
-and <span class='code'>Wrapping<i128></span>
+and <span class='code'>Wrapping&lt;i128></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/51050/'><span class='code'>DirEntry::metadata</span>
@@ -11257,7 +11257,7 @@ impl Trait + Send + Send {
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/51912/'><span class='code'>Box<CStr></span>
 , <span class='code'>Box<OsStr></span>
-, and <span class='code'>Box<Path></span>
+, and <span class='code'>Box&lt;Path></span>
  now implement <span class='code'>Clone</span>
 .</a></p>
 </li>
@@ -11773,10 +11773,10 @@ impl Point {
 <li><p><a href='https://github.com/rust-lang/rust/pull/56366/'>Self can also now be used in type definitions.</a> E.g.</p>
 <pre class='code'>enum List<T>
 where
-    Self: PartialOrd<Self> // can write `Self` instead of `List<T>`
+    Self: PartialOrd&lt;Self> // can write `Self` instead of `List<T>`
 {
     Nil,
-    Cons(T, Box<Self>) // likewise here
+    Cons(T, Box&lt;Self>) // likewise here
 }</pre>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/55663/'>You can now mark traits with <span class='code'>#[must_use]</span>
@@ -12455,7 +12455,7 @@ for all numeric types.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/57604/'>Indexing a <span class='code'>str</span>
  is now generic over all types that
-implement <span class='code'>SliceIndex<str></span>
+implement <span class='code'>SliceIndex&lt;str></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/57106/'><span class='code'>str::trim</span>
@@ -12820,7 +12820,7 @@ object.</a> e.g. <span class='code'>dyn Send + fmt::Debug</span>
  implementation.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/60318/'><span class='code'>TryFromSliceError</span>
- now implements <span class='code'>From<Infallible></span>
+ now implements <span class='code'>From&lt;Infallible></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/60364/'><span class='code'>mem::needs_drop</span>
@@ -12830,7 +12830,7 @@ object.</a> e.g. <span class='code'>dyn Send + fmt::Debug</span>
  is now available as a const fn.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/60404/'><span class='code'>String</span>
- now implements <span class='code'>BorrowMut<str></span>
+ now implements <span class='code'>BorrowMut&lt;str></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/60234/'><span class='code'>io::Cursor</span>
@@ -13030,7 +13030,7 @@ guided optimization, please refer to the <a href='https://doc.rust-lang.org/rust
 <li><p><a href='`cell::from_mut`'><span class='code'>Cell::from_mut</span>
 </a></p>
 </li>
-<li><p><a href='`cell<slice>::as_slice_of_cells`'><span class='code'>Cell<[T]>::as_slice_of_cells</span>
+<li><p><a href='`cell&lt;slice>::as_slice_of_cells`'><span class='code'>Cell<[T]>::as_slice_of_cells</span>
 </a></p>
 </li>
 <li><p><a href='`doubleendediterator::nth_back`'><span class='code'>DoubleEndedIterator::nth_back</span>
@@ -13713,14 +13713,14 @@ traits.</a> E.g. You can now write <span class='code'>impl<T> From<Foo> for Vec<
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/64325/'>You can now arbitrarily nest receiver types in the <span class='code'>self</span>
  position.</a> E.g. you can
-now write <span class='code'>fn foo(self: Box<Box<Self>>) {}</span>
+now write <span class='code'>fn foo(self: Box&lt;Box&lt;Self>>) {}</span>
 . Previously only <span class='code'>Self</span>
 , <span class='code'>&Self</span>
 ,
 <span class='code'>&mut Self</span>
-, <span class='code'>Arc<Self></span>
-, <span class='code'>Rc<Self></span>
-, and <span class='code'>Box<Self></span>
+, <span class='code'>Arc&lt;Self></span>
+, <span class='code'>Rc&lt;Self></span>
+, and <span class='code'>Box&lt;Self></span>
  were allowed.</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/66847/'>You can now use any valid identifier in a <span class='code'>format_args</span>
@@ -14146,7 +14146,7 @@ if they are available on <span class='code'>windows-gnu</span>
 , and <span class='code'>Rc<[T; N]></span>
 , now implement
 <span class='code'>TryFrom<Arc<[T]>></span>
-,<span class='code'>TryFrom<Box<[T]>></span>
+,<span class='code'>TryFrom&lt;Box<[T]>></span>
 , and <span class='code'>TryFrom<Rc<[T]>></span>
 
 respectively.</a> <b><i>Note</i></b>
@@ -14166,7 +14166,7 @@ than having to import the module.</a> e.g. You can now write <span class='code'>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/68742/'><span class='code'>String</span>
- now implements <span class='code'>AsMut<str></span>
+ now implements <span class='code'>AsMut&lt;str></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/67637/'>Added the <span class='code'>primitive</span>
@@ -15939,7 +15939,7 @@ information on Rust's tiered platform support.</p>
  object.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/80279'><span class='code'>str</span>
- now implements <span class='code'>AsMut<str></span>
+ now implements <span class='code'>AsMut&lt;str></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/79502'><span class='code'>u64</span>
@@ -16212,7 +16212,7 @@ information on Rust's tiered platform support.</p>
  now has <span class='code'>#[repr(transparent)]</span>
  representation.</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/80553'><span class='code'>Arc<impl Error></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/80553'><span class='code'>Arc&lt;impl Error></span>
  now implements <span class='code'>error::Error</span>
 .</a></p>
 </li>
@@ -16465,13 +16465,13 @@ Android platforms when available.</a></p>
 .</a>
 Currently calling <span class='code'>.into_iter()</span>
  as a method on an array will
-return <span class='code'>impl Iterator<Item=&T></span>
+return <span class='code'>impl Iterator&lt;Item=&T></span>
 , but this may change in a
 future edition to change <span class='code'>Item</span>
  to <span class='code'>T</span>
 . Calling <span class='code'>IntoIterator::into_iter</span>
 
-directly on arrays will provide <span class='code'>impl Iterator<Item=T></span>
+directly on arrays will provide <span class='code'>impl Iterator&lt;Item=T></span>
  as expected.</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/84082'><span class='code'>leading_zeros</span>
@@ -16810,7 +16810,7 @@ intrinsics API.</p>
 <div><span class='sticky-subheader'><div class='solid-background'><h3>Cargo</h3></div></span>
 
 <ul>
-<li><p><a href='https://github.com/rust-lang/cargo/pull/9520'>Added the <span class='code'>--prune <spec></span>
+<li><p><a href='https://github.com/rust-lang/cargo/pull/9520'>Added the <span class='code'>--prune &lt;spec></span>
  option to <span class='code'>cargo-tree</span>
  to remove a package from
 the dependency graph.</a></p>
@@ -16893,7 +16893,7 @@ no longer reject certain valid floating point values, and reduce
 the produced code size for non-stripped artifacts.</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/86858'><span class='code'>string::Drain</span>
- now implements <span class='code'>AsRef<str></span>
+ now implements <span class='code'>AsRef&lt;str></span>
  and <span class='code'>AsRef<[u8]></span>
 .</a></p>
 </li>
@@ -17510,8 +17510,8 @@ information on Rust's tiered platform support.</p>
 <li><p><a href='https://github.com/rust-lang/rust/pull/90117/'>Make RSplit<T, P>: Clone not require T: Clone</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/88601/'>Implement <span class='code'>Termination</span>
- for <span class='code'>Result<Infallible, E></span>
-</a>. This allows writing <span class='code'>fn main() -> Result<Infallible, ErrorType></span>
+ for <span class='code'>Result&lt;Infallible, E></span>
+</a>. This allows writing <span class='code'>fn main() -> Result&lt;Infallible, ErrorType></span>
 , for a program whose successful exits never involve returning from <span class='code'>main</span>
  (for instance, a program that calls <span class='code'>exit</span>
 , or that uses <span class='code'>exec</span>
@@ -18424,10 +18424,10 @@ information on Rust's tiered platform support.</p>
 <li><p><a href='`impl<t:default> default for assertunwindsafe<t>`'><span class='code'>impl<T: Default> Default for AssertUnwindSafe<T></span>
 </a></p>
 </li>
-<li><p><a href='https://doc.rust-lang.org/stable/std/rc/struct.Rc.html#impl-From%3CRc%3Cstr%3E%3E'><span class='code'>From<Rc<str>> for Rc<[u8]></span>
+<li><p><a href='https://doc.rust-lang.org/stable/std/rc/struct.Rc.html#impl-From%3CRc%3Cstr%3E%3E'><span class='code'>From<Rc&lt;str>> for Rc<[u8]></span>
 </a></p>
 </li>
-<li><p><a href='https://doc.rust-lang.org/stable/std/sync/struct.Arc.html#impl-From%3CArc%3Cstr%3E%3E'><span class='code'>From<Arc<str>> for Arc<[u8]></span>
+<li><p><a href='https://doc.rust-lang.org/stable/std/sync/struct.Arc.html#impl-From%3CArc%3Cstr%3E%3E'><span class='code'>From<Arc&lt;str>> for Arc<[u8]></span>
 </a></p>
 </li>
 <li><p><a href='`fusediteratorfor encodewide`'><span class='code'>FusedIterator for EncodeWide</span>
@@ -18666,7 +18666,7 @@ information on Rust's tiered platform support.</p>
 <li><p><a href='`refmut::filter_map`'><span class='code'>RefMut::filter_map</span>
 </a></p>
 </li>
-<li><p><a href='`nonnull::<slice>::len`'><span class='code'>NonNull::<[T]>::len</span>
+<li><p><a href='`nonnull::&lt;slice>::len`'><span class='code'>NonNull::<[T]>::len</span>
 </a></p>
 </li>
 <li><p><a href='`toowned::clone_into`'><span class='code'>ToOwned::clone_into</span>
@@ -19885,7 +19885,7 @@ definition of a handler for allocation failure. Defining custom handlers is stil
 <li><p><a href='https://doc.rust-lang.org/stable/std/pin/macro.pin.html'><span class='code'>{core,std}::pin::pin!</span>
 </a></p>
 </li>
-<li><p><a href='https://doc.rust-lang.org/stable/std/primitive.f32.html#impl-From%3Cbool%3E-for-f32'><span class='code'>impl From<bool> for {f32,f64}</span>
+<li><p><a href='https://doc.rust-lang.org/stable/std/primitive.f32.html#impl-From%3Cbool%3E-for-f32'><span class='code'>impl From&lt;bool> for {f32,f64}</span>
 </a></p>
 </li>
 <li><p><a href='https://doc.rust-lang.org/stable/std/path/constant.MAIN_SEPARATOR_STR.html'><span class='code'>std::path::MAIN_SEPARATOR_STR</span>
