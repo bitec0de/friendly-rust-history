@@ -3626,7 +3626,7 @@ Windows, symlinks can be created with
 </li>
 <li><p><span class='code'>Ipv4Addr</span>
  can be created from <span class='code'>u32</span>
- with the <span class='code'>From<u32></span>
+ with the <span class='code'>From&lt;u32></span>
 
 implementation of the <a href='`from`'><span class='code'>From</span>
 </a> trait.</p>
@@ -5128,7 +5128,7 @@ be the same length</p>
 <li><p><a href='`cstring::into_bytes_with_nul`'><span class='code'>CString::into_bytes_with_nul</span>
 </a></p>
 </li>
-<li><p><span class='code'>From<CString> for Vec<u8></span>
+<li><p><span class='code'>From<CString> for Vec&lt;u8></span>
 </p>
 </li>
 
@@ -8686,7 +8686,7 @@ future work, including incremental type checking, but also resolves <a href='rfc
  and <span class='code'>Display</span>
 </a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/39642'>Specialize <span class='code'>PartialOrd<A> for [A] where A: Ord</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/39642'>Specialize <span class='code'>PartialOrd&lt;A> for [A] where A: Ord</span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/39538'>Slightly optimize <span class='code'>slice::sort</span>
@@ -8721,7 +8721,7 @@ future work, including incremental type checking, but also resolves <a href='rfc
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/38661'>Implement <span class='code'>PartialEq<[A]></span>
- for <span class='code'>VecDeque<A></span>
+ for <span class='code'>VecDeque&lt;A></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/38368'><span class='code'>HashMap</span>
@@ -9926,7 +9926,7 @@ simple bindings</a> This should improve memory usage on average by 5-10%.</p>
  for <span class='code'>AtomicPtr<T></span>
 </a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/45610'>impl <span class='code'>From<usize/isize></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/45610'>impl <span class='code'>From&lt;usize/isize></span>
  for <span class='code'>AtomicUsize/AtomicIsize</span>
 .</a></p>
 </li>
@@ -10108,7 +10108,7 @@ some optimisations from LLVM.</p>
 </ul>
 
 <p>The following functions can now be used in a constant expression.
-eg. <span class='code'>let buffer: [u8; size_of::<usize>()];</span>
+eg. <span class='code'>let buffer: [u8; size_of::&lt;usize>()];</span>
 , <span class='code'>static COUNTER: AtomicUsize = AtomicUsize::new(1);</span>
 </p>
 
@@ -10288,7 +10288,7 @@ fn main() {
  for Component</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/46830'>Implemented <span class='code'>Write</span>
- for <span class='code'>Cursor<&mut Vec<u8>></span>
+ for <span class='code'>Cursor<&mut Vec&lt;u8>></span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/46666'>Moved <span class='code'>Duration</span>
@@ -10439,7 +10439,7 @@ to remap path prefixes outputted by the compiler.</p>
 <div><span class='sticky-subheader'><div class='solid-background'><h3>Libraries</h3></div></span>
 
 <ul>
-<li><p><a href='https://github.com/rust-lang/rust/pull/49305'>Implemented <span class='code'>From<u16> for usize</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/49305'>Implemented <span class='code'>From&lt;u16> for usize</span>
  & <span class='code'>From<{u8, i16}> for isize</span>
 .</a></p>
 </li>
@@ -11070,7 +11070,7 @@ for <span class='code'>PathBuf</span>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/50465/'>Implemented <span class='code'>Shl</span>
  and <span class='code'>Shr</span>
- for <span class='code'>Wrapping<u128></span>
+ for <span class='code'>Wrapping&lt;u128></span>
 
 and <span class='code'>Wrapping&lt;i128></span>
 .</a></p>
@@ -12969,7 +12969,7 @@ generic parameters.</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/61682/'>You can now use enum variants through type alias.</a> e.g. You can
 write the following:</p>
-<pre class='code'>type MyOption = Option<u8>;
+<pre class='code'>type MyOption = Option&lt;u8>;
 
 fn increment_or_zero(x: MyOption) -> u8 {
     match x {
@@ -13362,7 +13362,7 @@ of <span class='code'>match</span>
     match array {
         nums
 //      ---- `nums` is bound by move.
-            if nums.iter().sum::<u8>() == 10
+            if nums.iter().sum::&lt;u8>() == 10
 //                 ^------ `.iter()` implicitly takes a reference to `nums`.
         => {
             drop(nums);
@@ -13837,7 +13837,7 @@ merge conflicts.</a></p>
  crate's
 optimisation level to <span class='code'>2</span>
  for debug builds. You can also use
-<span class='code'>[profile.<profile>.build-override]</span>
+<span class='code'>[profile.&lt;profile>.build-override]</span>
  to override build scripts and
 their dependencies.</p>
 </li>
@@ -14145,7 +14145,7 @@ if they are available on <span class='code'>windows-gnu</span>
 , <span class='code'>Box<[T; N]></span>
 , and <span class='code'>Rc<[T; N]></span>
 , now implement
-<span class='code'>TryFrom<Arc<[T]>></span>
+<span class='code'>TryFrom&lt;Arc<[T]>></span>
 ,<span class='code'>TryFrom&lt;Box<[T]>></span>
 , and <span class='code'>TryFrom<Rc<[T]>></span>
 
@@ -14909,7 +14909,7 @@ integer types.</a></p>
 <li><p><a href='https://github.com/rust-lang/rust/pull/72717/'>All non-zero integer types (<span class='code'>NonZeroU8</span>
 ) now implement <span class='code'>TryFrom</span>
  for their
-zero-able equivalent (e.g. <span class='code'>TryFrom<u8></span>
+zero-able equivalent (e.g. <span class='code'>TryFrom&lt;u8></span>
 ).</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/71660/'><span class='code'>&[T]</span>
@@ -15056,7 +15056,7 @@ information on Rust's tiered platform support.</p>
 
 <ul>
 <li><p><a href='https://github.com/rust-lang/rust/pull/74021/'><span class='code'>CStr</span>
- now implements <span class='code'>Index<RangeFrom<usize>></span>
+ now implements <span class='code'>Index<RangeFrom&lt;usize>></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/74060/'>Traits in <span class='code'>std</span>
@@ -15301,7 +15301,7 @@ and <span class='code'>&Stderr</span>
 <li><p><a href='https://github.com/rust-lang/rust/pull/74880/'>The <span class='code'>matches!</span>
  macro now supports having a trailing comma.</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/74194/'><span class='code'>Vec<A></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/74194/'><span class='code'>Vec&lt;A></span>
  now implements <span class='code'>PartialEq<[B]></span>
  where <span class='code'>A: PartialEq&lt;B></span>
 .</a></p>
@@ -15378,7 +15378,7 @@ a link to <span class='code'>std::future</span>
 's documentation. See <a href='https://doc.rust-lang.org/rustdoc/linking-to-items-by-name.html'>"Linking to items by
 name"</a> for more information.</p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/75740/'>You can now specify <span class='code'>#[doc(alias = "<alias>")]</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/75740/'>You can now specify <span class='code'>#[doc(alias = "&lt;alias>")]</span>
  on items to add search aliases
 when searching through <span class='code'>rustdoc</span>
 's UI.</a></p>
@@ -16486,7 +16486,7 @@ directly on arrays will provide <span class='code'>impl Iterator&lt;Item=T></spa
 , <span class='code'>-0</span>
 ) according to IEEE 754.</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/77704'>You can now index into slices using <span class='code'>(Bound<usize>, Bound<usize>)</span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/77704'>You can now index into slices using <span class='code'>(Bound&lt;usize>, Bound&lt;usize>)</span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/82565'>Add the <span class='code'>BITS</span>
@@ -17105,7 +17105,7 @@ to stdout) without regard for Unicode or character boundaries.</p>
 For this use case, atomics scale much better under contention.</p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/85835'>Implement <span class='code'>Extend<(A, B)></span>
- for <span class='code'>(Extend<A>, Extend&lt;B>)</span>
+ for <span class='code'>(Extend&lt;A>, Extend&lt;B>)</span>
 </a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/86744'>impl Default, Copy, Clone for std::io::Sink and std::io::Empty</a></p>
@@ -18037,7 +18037,7 @@ information on Rust's tiered platform support.</p>
 <li><p><a href='https://doc.rust-lang.org/stable/std/io/enum.ErrorKind.html#impl-Display'><span class='code'>Display for io::ErrorKind</span>
 </a></p>
 </li>
-<li><p><a href='https://doc.rust-lang.org/stable/std/process/struct.ExitCode.html#impl-From%3Cu8%3E'><span class='code'>From<u8> for ExitCode</span>
+<li><p><a href='https://doc.rust-lang.org/stable/std/process/struct.ExitCode.html#impl-From%3Cu8%3E'><span class='code'>From&lt;u8> for ExitCode</span>
 </a></p>
 </li>
 <li><p><a href='https://doc.rust-lang.org/stable/std/primitive.never.html#impl-Not'><span class='code'>Not for !</span>
@@ -18427,7 +18427,7 @@ information on Rust's tiered platform support.</p>
 <li><p><a href='https://doc.rust-lang.org/stable/std/rc/struct.Rc.html#impl-From%3CRc%3Cstr%3E%3E'><span class='code'>From<Rc&lt;str>> for Rc<[u8]></span>
 </a></p>
 </li>
-<li><p><a href='https://doc.rust-lang.org/stable/std/sync/struct.Arc.html#impl-From%3CArc%3Cstr%3E%3E'><span class='code'>From<Arc&lt;str>> for Arc<[u8]></span>
+<li><p><a href='https://doc.rust-lang.org/stable/std/sync/struct.Arc.html#impl-From%3CArc%3Cstr%3E%3E'><span class='code'>From&lt;Arc&lt;str>> for Arc<[u8]></span>
 </a></p>
 </li>
 <li><p><a href='`fusediteratorfor encodewide`'><span class='code'>FusedIterator for EncodeWide</span>
@@ -18594,7 +18594,7 @@ information on Rust's tiered platform support.</p>
  and <span class='code'>null_mut</span>
  to all thin (including extern) types.</a></p>
 </li>
-<li><p><a href='https://github.com/rust-lang/rust/pull/95632/'><span class='code'>impl Read and Write for VecDeque<u8></span>
+<li><p><a href='https://github.com/rust-lang/rust/pull/95632/'><span class='code'>impl Read and Write for VecDeque&lt;u8></span>
 .</a></p>
 </li>
 <li><p><a href='https://github.com/rust-lang/rust/pull/95897/'>STD support for the Nintendo 3DS.</a></p>

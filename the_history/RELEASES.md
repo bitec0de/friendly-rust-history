@@ -705,7 +705,7 @@ Libraries
 ---------
 - [Implement `Copy`, `Clone`, `PartialEq` and `Eq` for `core::fmt::Alignment`.][94530]
 - [Extend `ptr::null` and `null_mut` to all thin (including extern) types.][94954]
-- [`impl Read and Write for VecDeque<u8>`.][95632]
+- [`impl Read and Write for VecDeque&lt;u8>`.][95632]
 - [STD support for the Nintendo 3DS.][95897]
 - [Use rounding in float to Duration conversion methods.][96051]
 - [Make write/print macros eagerly drop temporaries.][96455]
@@ -933,7 +933,7 @@ Stabilized APIs
 - [`windows::CommandExt::raw_arg`]
 - [`impl<T: Default> Default for AssertUnwindSafe<T>`]
 - [`From<Rc&lt;str>> for Rc<[u8]>`][rc-u8-from-str]
-- [`From<Arc&lt;str>> for Arc<[u8]>`][arc-u8-from-str]
+- [`From&lt;Arc&lt;str>> for Arc<[u8]>`][arc-u8-from-str]
 - [`FusedIterator for EncodeWide`]
 - [RDM intrinsics on aarch64][stdarch/1285]
 
@@ -1198,7 +1198,7 @@ Stabilized APIs
 - [`u128::abs_diff`][u128_abs_diff]
 - [`usize::abs_diff`][usize_abs_diff]
 - [`Display for io::ErrorKind`][display_error_kind]
-- [`From<u8> for ExitCode`][from_u8_exit_code]
+- [`From&lt;u8> for ExitCode`][from_u8_exit_code]
 - [`Not for !` (the "never" type)][not_never]
 - [_Op_`Assign<$t> for Wrapping<$t>`][wrapping_assign_ops]
 - [`arch::is_aarch64_feature_detected!`][is_aarch64_feature_detected]
@@ -1794,7 +1794,7 @@ Libraries
   to stdout) without regard for Unicode or character boundaries.
 - [Prefer `AtomicU{64,128}` over Mutex for Instant backsliding protection.][rust#83093]
   For this use case, atomics scale much better under contention.
-- [Implement `Extend<(A, B)>` for `(Extend<A>, Extend&lt;B>)`][rust#85835]
+- [Implement `Extend<(A, B)>` for `(Extend&lt;A>, Extend&lt;B>)`][rust#85835]
 - [impl Default, Copy, Clone for std::io::Sink and std::io::Empty][rust#86744]
 - [`impl From<[(K, V); N]>` for all collections.][rust#84111]
 - [Remove `P: Unpin` bound on impl Future for Pin.][rust#81363]
@@ -2208,7 +2208,7 @@ Libraries
   `NonZero` integer types.][84082]
 - [`{f32, f64}::from_str` now parse and print special values
   (`NaN`, `-0`) according to IEEE 754.][78618]
-- [You can now index into slices using `(Bound<usize>, Bound<usize>)`.][77704]
+- [You can now index into slices using `(Bound&lt;usize>, Bound&lt;usize>)`.][77704]
 - [Add the `BITS` associated constant to all numeric types.][82565]
 
 Stabilised APIs
@@ -3007,7 +3007,7 @@ Libraries
   and `&Stderr`.][76275]
 - [All arrays of any length now implement `TryFrom<Vec<T>>`.][76310]
 - [The `matches!` macro now supports having a trailing comma.][74880]
-- [`Vec<A>` now implements `PartialEq<[B]>` where `A: PartialEq&lt;B>`.][74194]
+- [`Vec&lt;A>` now implements `PartialEq<[B]>` where `A: PartialEq&lt;B>`.][74194]
 - [The `RefCell::{replace, replace_with, clone}` methods now all use `#[track_caller]`.][77055]
 
 Stabilized APIs
@@ -3038,7 +3038,7 @@ Rustdoc
   syntax.][74430] E.g. ``/// Uses [`std::future`]`` will automatically generate
   a link to `std::future`'s documentation. See ["Linking to items by
   name"][intradoc-links] for more information.
-- [You can now specify `#[doc(alias = "<alias>")]` on items to add search aliases
+- [You can now specify `#[doc(alias = "&lt;alias>")]` on items to add search aliases
   when searching through `rustdoc`'s UI.][75740]
 
 Compatibility Notes
@@ -3142,7 +3142,7 @@ information on Rust's tiered platform support.
 
 Libraries
 ---------
-- [`CStr` now implements `Index<RangeFrom<usize>>`.][74021]
+- [`CStr` now implements `Index<RangeFrom&lt;usize>>`.][74021]
 - [Traits in `std`/`core` are now implemented for arrays of any length, not just
   those of length less than 33.][74060]
 - [`ops::RangeFull` and `ops::Range` now implement Default.][73197]
@@ -3281,7 +3281,7 @@ Libraries
   integer types.][73032]
 - [`vec::IntoIter<T>` now implements `AsRef<[T]>`.][72583]
 - [All non-zero integer types (`NonZeroU8`) now implement `TryFrom` for their
-  zero-able equivalent (e.g. `TryFrom<u8>`).][72717]
+  zero-able equivalent (e.g. `TryFrom&lt;u8>`).][72717]
 - [`&[T]` and `&mut [T]` now implement `PartialEq<Vec<T>>`.][71660]
 - [`(String, u16)` now implements `ToSocketAddrs`.][73007]
 - [`vec::Drain<'_, T>` now implements `AsRef<[T]>`.][72584]
@@ -3785,7 +3785,7 @@ Compiler
 Libraries
 ---------
 - [`Arc<[T; N]>`, `Box<[T; N]>`, and `Rc<[T; N]>`, now implement
-  `TryFrom<Arc<[T]>>`,`TryFrom&lt;Box<[T]>>`, and `TryFrom<Rc<[T]>>`
+  `TryFrom&lt;Arc<[T]>>`,`TryFrom&lt;Box<[T]>>`, and `TryFrom<Rc<[T]>>`
   respectively.][69538] **Note** These conversions are only available when `N`
   is `0..=32`.
 - [You can now use associated constants on floats and integers directly, rather
@@ -4070,7 +4070,7 @@ Cargo
 - [You can now override specific dependencies's build settings][cargo/7591] E.g.
   `[profile.dev.package.image] opt-level = 2` sets the `image` crate's
   optimisation level to `2` for debug builds. You can also use
-  `[profile.<profile>.build-override]` to override build scripts and
+  `[profile.&lt;profile>.build-override]` to override build scripts and
   their dependencies.
 
 Misc
@@ -4284,7 +4284,7 @@ Language
       match array {
           nums
   //      ---- `nums` is bound by move.
-              if nums.iter().sum::<u8>() == 10
+              if nums.iter().sum::&lt;u8>() == 10
   //                 ^------ `.iter()` implicitly takes a reference to `nums`.
           => {
               drop(nums);
@@ -4503,7 +4503,7 @@ Language
 - [You can now use enum variants through type alias.][61682] e.g. You can
   write the following:
   ```rust
-  type MyOption = Option<u8>;
+  type MyOption = Option&lt;u8>;
 
   fn increment_or_zero(x: MyOption) -> u8 {
       match x {
@@ -5785,7 +5785,7 @@ Libraries
   for `Cow<CStr>`, `From<OsString>, From<OsStr>, From<&OsString>` for
   `Cow<OsStr>`, `From<&PathBuf>` for `Cow&lt;Path>`, and `From<Cow&lt;Path>>`
   for `PathBuf`.][50170]
-- [Implemented `Shl` and `Shr` for `Wrapping<u128>`
+- [Implemented `Shl` and `Shr` for `Wrapping&lt;u128>`
   and `Wrapping&lt;i128>`.][50465]
 - [`DirEntry::metadata` now uses `fstatat` instead of `lstat` when
   possible.][51050] This can provide up to a 40% speed increase.
@@ -6159,7 +6159,7 @@ Compiler
 
 Libraries
 ---------
-- [Implemented `From<u16> for usize` & `From<{u8, i16}> for isize`.][49305]
+- [Implemented `From&lt;u16> for usize` & `From<{u8, i16}> for isize`.][49305]
 - [Added hexadecimal formatting for integers with fmt::Debug][48978]
   e.g. `assert!(format!("{:02x?}", b"Foo\0") == "[46, 6f, 6f, 00]")`
 - [Implemented `Default, Hash` for `cmp::Reverse`.][48628]
@@ -6355,7 +6355,7 @@ Libraries
 - [Implement libstd for CloudABI.][47268]
 - [`Float::{from_bits, to_bits}` is now available in libcore.][46931]
 - [Implement `AsRef&lt;Path>` for Component][46985]
-- [Implemented `Write` for `Cursor<&mut Vec<u8>>`][46830]
+- [Implemented `Write` for `Cursor<&mut Vec&lt;u8>>`][46830]
 - [Moved `Duration` to libcore.][46666]
 
 Stabilized APIs
@@ -6472,7 +6472,7 @@ Stabilized APIs
 - [`atomic::spin_loop_hint`]
 
 The following functions can now be used in a constant expression.
-eg. `let buffer: [u8; size_of::<usize>()];`, `static COUNTER: AtomicUsize = AtomicUsize::new(1);`
+eg. `let buffer: [u8; size_of::&lt;usize>()];`, `static COUNTER: AtomicUsize = AtomicUsize::new(1);`
 
 - [`AtomicBool::new`][46287]
 - [`AtomicUsize::new`][46287]
@@ -6570,7 +6570,7 @@ Libraries
 - [Allow a trailing comma in `assert_eq/ne` macro][45887]
 - [Implement Hash for raw pointers to unsized types][45483]
 - [impl `From<*mut T>` for `AtomicPtr<T>`][45610]
-- [impl `From<usize/isize>` for `AtomicUsize/AtomicIsize`.][45610]
+- [impl `From&lt;usize/isize>` for `AtomicUsize/AtomicIsize`.][45610]
 - [Removed the `T: Sync` requirement for `RwLock<T>: Send`][45267]
 - [Removed `T: Sized` requirement for `{<*const T>, <*mut T>}::as_ref`
   and `<*mut T>::as_mut`][44932]
@@ -7418,7 +7418,7 @@ Libraries
   `From<&OsStr> for Box<OsStr>`,
   `From<&Path> for Box&lt;Path>`
 * [`ffi::FromBytesWithNulError` implements `Error` and `Display`][39960]
-* [Specialize `PartialOrd<A> for [A] where A: Ord`][39642]
+* [Specialize `PartialOrd&lt;A> for [A] where A: Ord`][39642]
 * [Slightly optimize `slice::sort`][39538]
 * [Add `ToString` trait specialization for `Cow<'a, str>` and `String`][39440]
 * [`Box<[T]>` implements `From<&[T]> where T: Copy`,
@@ -7428,7 +7428,7 @@ Libraries
 * [`format!` estimates the needed capacity before writing a string][39356]
 * [Support unprivileged symlink creation in Windows][38921]
 * [`PathBuf` implements `Default`][38764]
-* [Implement `PartialEq<[A]>` for `VecDeque<A>`][38661]
+* [Implement `PartialEq<[A]>` for `VecDeque&lt;A>`][38661]
 * [`HashMap` resizes adaptively][38368] to guard against DOS attacks
   and poor hash functions.
 
@@ -9562,7 +9562,7 @@ Libraries
     * [`CString::into_string`]
     * [`CString::into_bytes`]
     * [`CString::into_bytes_with_nul`]
-    * `From<CString> for Vec<u8>`
+    * `From<CString> for Vec&lt;u8>`
   * `IntoStringError`
     * [`IntoStringError::into_cstring`]
     * [`IntoStringError::utf8_error`]
@@ -10673,7 +10673,7 @@ Libraries
   `std::os::windows::symlink_file`.
 * The `mpsc::Receiver` type can now be converted into an iterator with
   `into_iter` on the [`IntoIterator`] trait.
-* `Ipv4Addr` can be created from `u32` with the `From<u32>`
+* `Ipv4Addr` can be created from `u32` with the `From&lt;u32>`
   implementation of the [`From`] trait.
 * The `Debug` implementation for `RangeFull` [creates output that is
   more consistent with other implementations][rf].
